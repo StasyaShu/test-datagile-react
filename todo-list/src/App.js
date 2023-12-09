@@ -1,3 +1,4 @@
+import TodoForm from './components/TodoForm/TodoForm';
 import './App.css';
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
     <div className='app'>
       <header className='app-header'>
         <div className='wrapper'>
-          {/* форма с инпутом и кнопкой Добавить */}
+          <TodoForm />
         </div>
       </header>
       <main className='app-main'>
