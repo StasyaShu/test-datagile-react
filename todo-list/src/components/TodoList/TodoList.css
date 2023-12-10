@@ -2,18 +2,22 @@
   text-align: center;
 }
 
+.todo-list {
+  display: block;
+  overflow-y: auto;
+}
+
 .todo-list ul {
+  display: block;
   list-style: none;
   width: 100%;
+  overflow-y: auto;
 }
 
 .todo-list li {
   width: 100%;
   display: flex;
   align-items: center;
-}
-
-.todo-list li:not(:last-child) {
   margin: 0 0 10px 0;
 }
 

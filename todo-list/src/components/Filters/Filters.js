@@ -4,6 +4,7 @@ import {
   setOnlyFinished,
   setOnlyActive,
   resetFilters,
+  sortTodos,
 } from '../../redux/slices/filtersSlice';
 import './Filters.css';
 
@@ -32,6 +33,10 @@ const Filters = () => {
     }
   };
 
+  const handleSortTodos = e => {
+    dispatch(sortTodos(e.target.value));
+  };
+
   return (
     <div className='filters'>
       <div className='filters__radio filters-block'>
@@ -55,10 +60,9 @@ const Filters = () => {
         <p>Сортировка</p>
         <div className='filters-block__wrapper filters-block__wrapper--select'>
           <VscTriangleDown />
-          <select>
-            <option value='any'>Наименование или статус</option>
-            <option value='name'>Наименование</option>
-            <option value='status'>Статус</option>
+          <select onChange={handleSortTodos} defaultValue='name'>
+            <option value='text'>Наименование</option>
+            <option value='isDone'>Статус</option>
           </select>
         </div>
       </div>

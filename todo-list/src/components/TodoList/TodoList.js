@@ -6,13 +6,19 @@ import {
   setTodoIsDone,
   selectTodos,
 } from '../../redux/slices/todoSlice';
-import {selectOnlyFinished} from '../../redux/slices/filtersSlice';
+import {
+  selectOnlyFinished,
+  selectSortValue,
+} from '../../redux/slices/filtersSlice';
 import './TodoList.css';
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectTodos);
   const onlyFinishedFilter = useSelector(selectOnlyFinished);
+  const sortValue = useSelector(selectSortValue);
+
+  console.log(sortValue);
 
   const filteredTodos = todos.filter(todo => {
     if (onlyFinishedFilter === null) return true;
@@ -20,6 +26,12 @@ const TodoList = () => {
     const matchesActive = !onlyFinishedFilter ? !todo.isDone : true;
     return matchesFinished && matchesActive;
   });
+
+  function byField(fieldName) {
+    return (a, b) => (a[fieldName] > b[fieldName] ? 1 : -1);
+  }
+
+  filteredTodos.sort(byField(sortValue));
 
   const handleDeleteTodo = todoId => {
     dispatch(deleteTodo(todoId));

@@ -51,6 +51,7 @@ h1 {
 
 .app-main {
   height: 100%;
+  overflow-y: hidden;
 }
 
 .app-main__content {
@@ -80,4 +81,18 @@ h1 {
   flex-direction: column;
   height: 100%;
   padding: 10px;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1024px) {
+  .app-main__content {
+    flex-direction: column;
+  }
+
+  .app-main__content::after {
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+  }
 }

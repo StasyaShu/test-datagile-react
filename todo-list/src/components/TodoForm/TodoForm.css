@@ -55,3 +55,33 @@
   background-color: #546cc9;
   transition: all 0.3s ease-in-out;
 }
+
+@media (max-width: 1024px) {
+  .todo-form form {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .todo-form label {
+    width: 100%;
+    text-align: left;
+    margin: 0 0 8px 0;
+  }
+  .todo-form input {
+    margin: 0;
+    width: 62%;
+  }
+
+  .todo-form button[type='submit'] {
+    width: 116px;
+  }
+}
+
+@media (max-width: 390px) {
+  .todo-form input {
+    margin: 0 0 15px 0;
+    width: 100%;
+  }
+  .todo-form button[type='submit'] {
+    margin: 0;
+  }
+}

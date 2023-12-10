@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   text: '',
   onlyDone: null,
+  sortValue: 'text',
 };
 
 const filterSlice = createSlice({
@@ -18,12 +19,16 @@ const filterSlice = createSlice({
     resetFilters: () => {
       return initialState;
     },
+    sortTodos: (state, action) => {
+      state.sortValue = action.payload;
+    },
   },
 });
 
-export const {setOnlyFinished, setOnlyActive, resetFilters} =
+export const {setOnlyFinished, setOnlyActive, resetFilters, sortTodos} =
   filterSlice.actions;
 
 export const selectOnlyFinished = state => state.filters.onlyDone;
+export const selectSortValue = state => state.filters.sortValue;
 
 export default filterSlice.reducer;
