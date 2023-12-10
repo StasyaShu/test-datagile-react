@@ -1,4 +1,5 @@
 import TodoForm from './components/TodoForm/TodoForm';
+import TodoList from './components/TodoList/TodoList';
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <h1>Список задач</h1>
           <div className='app-main__content'>
             <div className='app-main__block'>
-              {/* список задач с чекбоксом и кнопкой удаления */}
+              <TodoList />
             </div>
             <div className='app-main__block'>
               {/* фильтры по статусу */}
