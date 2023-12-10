@@ -12,7 +12,7 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const filersRadio = [
-    {id: 'all', text: 'Все', value: 'all'},
+    {id: 'all', text: 'Все', value: 'all', isChecked: true},
     {id: 'active', text: 'Активные', value: 'active'},
     {id: 'finished', text: 'Завершенные', value: 'finished'},
   ];
@@ -49,6 +49,7 @@ const Filters = () => {
                 id={`${block.id}`}
                 value={`${block.value}`}
                 name='status'
+                defaultChecked={block.isChecked}
                 onClick={() => handleRadioOption(block.value)}
               ></input>
               <label htmlFor={`${block.id}`}>{block.text}</label>

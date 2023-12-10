@@ -18,8 +18,6 @@ const TodoList = () => {
   const onlyFinishedFilter = useSelector(selectOnlyFinished);
   const sortValue = useSelector(selectSortValue);
 
-  console.log(sortValue);
-
   const filteredTodos = todos.filter(todo => {
     if (onlyFinishedFilter === null) return true;
     const matchesFinished = onlyFinishedFilter ? todo.isDone : true;
