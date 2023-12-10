@@ -1,5 +1,6 @@
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
+import Filters from './components/Filters/Filters';
 import './App.css';
 
 function App() {
@@ -18,8 +19,7 @@ function App() {
               <TodoList />
             </div>
             <div className='app-main__block'>
-              {/* фильтры по статусу */}
-              {/* сортировка по статусу или наименованию */}
+              <Filters />
             </div>
           </div>
         </div>

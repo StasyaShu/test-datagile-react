@@ -1,29 +1,41 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {deleteTodo, setTodoIsDone} from '../../redux/slices/todoSlice';
 import {MdDeleteOutline} from 'react-icons/md';
 import {FaCheck} from 'react-icons/fa6';
+import {
+  deleteTodo,
+  setTodoIsDone,
+  selectTodos,
+} from '../../redux/slices/todoSlice';
+import {selectOnlyFinished} from '../../redux/slices/filtersSlice';
 import './TodoList.css';
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos);
+  const todos = useSelector(selectTodos);
+  const onlyFinishedFilter = useSelector(selectOnlyFinished);
+
+  const filteredTodos = todos.filter(todo => {
+    if (onlyFinishedFilter === null) return true;
+    const matchesFinished = onlyFinishedFilter ? todo.isDone : true;
+    const matchesActive = !onlyFinishedFilter ? !todo.isDone : true;
+    return matchesFinished && matchesActive;
+  });
 
   const handleDeleteTodo = todoId => {
     dispatch(deleteTodo(todoId));
   };
 
   const handleFulfillTodo = todoId => {
-    console.log(todoId);
     dispatch(setTodoIsDone(todoId));
   };
 
   return (
     <div className='todo-list'>
-      {todos.length === 0 ? (
+      {filteredTodos.length === 0 ? (
         <p className='todo-list__no-todos'>Задачи отсутствуют.</p>
       ) : (
         <ul>
-          {todos.map(todo => (
+          {filteredTodos.map(todo => (
             <li key={todo.id}>
               <div className='todo-list__checkbox todo-checkbox'>
                 <label
