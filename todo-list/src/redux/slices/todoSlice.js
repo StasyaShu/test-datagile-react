@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
+import todosData from '../../data/todos.json';
 
-const initialState = [];
+const initialState = todosData;
 
 const todoSlice = createSlice({
   name: 'todos',
